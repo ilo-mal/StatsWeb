@@ -63,7 +63,6 @@ def cpu_graph_scatter(input_data):
 @app.callback(Output('my-graph', 'figure'),
               [Input('update', 'n_intervals')])
 def memory_graph_scatter(inp_data):
-    # X.append(datetime.datetime.now().strftime('%H:%M:%S'))
     memory = psutil.virtual_memory()[2]
     Z.append(memory)
     data = go.Scatter(
@@ -75,7 +74,6 @@ def memory_graph_scatter(inp_data):
 app.layout = html.Div(
 
     [
-        # dbc.Row(dbc.Col(html.H1('Hello stranger!'))),
         dbc.Row(
             [
                 dbc.Col([dcc.Graph(id='live-graph', animate=False, style={'height': 300}),
@@ -88,7 +86,6 @@ app.layout = html.Div(
                 ], style={'border': '2px solid red', 'border-radius': '25px', 'backgroundColor': '#e1e2e2'})], style={'margin': '10px', }),
         dbc.Row([
             dbc.Col([dcc.Graph(id='my-graph', animate=False, style={'height': 300}),
-                     # style={'width': '70%', 'height': 300}
                      dcc.Interval(id='update', interval=1 * 2000)], width=7,
                     style={'border': '2px solid red', 'border-radius': '25px', 'backgroundColor': '#e1e2e2'}),
             dbc.Col([dcc.Graph(id='net-graph', animate=False, style={'height': 300}),
